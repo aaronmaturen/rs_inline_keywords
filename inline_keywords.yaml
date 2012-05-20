@@ -3,5 +3,5 @@ author: Aaron T. Maturen
 version: 0.1
 desc: Enable Adding Keywords on Search Result Page
 info_url: https://github.com/aaronmaturen/rs_inline_keywords
-config_url: /plugins/simple_keywords/pages/setup.php
+config_url: /plugins/inline_keywords/pages/setup.php
 default_priority: 999

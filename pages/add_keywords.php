@@ -1,7 +1,7 @@
 <?php
 
 include_once "../../../include/db.php";
-include_once "../../../include/authenticate.php";if (!checkperm("a")) {exit("Permission denied");}
+include_once "../../../include/authenticate.php";if (!checkperm(checkperm($inline_keywords_usertype))) {exit("Permission denied");}
 include_once "../../../include/general.php";
 include_once "../../../include/resource_functions.php";
 
