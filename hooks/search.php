@@ -28,13 +28,14 @@
         { ?>
             <script type='text/javascript'>
                 jQuery(document).ready(function() {
-                    jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').on('click', function() {
-                        jQuery(this).toggleClass('chosen');
-                        jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
-                        jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
+                    jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').on('click', function(event) {
+                        if(!(event.originalEvent.srcElement instanceof HTMLImageElement )){
+                            //console.log(event.originalEvent.srcElement instance of HTMLImageElement);
+                            jQuery(this).toggleClass('chosen');
+                            jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
+                            jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
+                        }
                     });
-                    
-                    jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').on('click','a',function(event){event.stopPropagation();});
                     
                     jQuery('#clearSelectedResourceButton').on('click', function() {
                         jQuery('.chosen').removeClass('chosen');
