@@ -1,7 +1,7 @@
 name: inline_keywords
 author: Aaron T. Maturen
 version: 0.1
-desc: Short project description
-info_url: http://url.to.your/info_pages/ (Link to web page with additional information about the plugin)
+desc: Enable Adding Keywords on Search Result Page
+info_url: https://github.com/aaronmaturen/rs_inline_keywords
 config_url: /plugins/simple_keywords/pages/setup.php
 default_priority: 999
