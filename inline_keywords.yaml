@@ -1,0 +1,7 @@
+name: inline_keywords
+author: Aaron T. Maturen
+version: 0.1
+desc: Short project description
+info_url: http://url.to.your/info_pages/ (Link to web page with additional information about the plugin)
+config_url: /plugins/simple_keywords/pages/setup.php
+default_priority: 999

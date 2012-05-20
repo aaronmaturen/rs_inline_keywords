@@ -1,0 +1,3 @@
+.ResourcePanel {margin:5px;}
+.ResourcePanelSmall {margin:5px;}
+.chosen .ResourcePanel, .chosen .ResourcePanelSmall{border:5px solid hotPink; margin:1px 0;}
