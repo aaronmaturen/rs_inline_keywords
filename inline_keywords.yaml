@@ -1,6 +1,6 @@
 name: inline_keywords
 author: Aaron T. Maturen
-version: 0.4
+version: 0.5
 desc: Enable Adding Keywords on Search Result Page
 info_url: https://github.com/aaronmaturen/rs_inline_keywords
 config_url: /plugins/inline_keywords/pages/setup.php
