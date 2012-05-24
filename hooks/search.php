@@ -1,7 +1,7 @@
 <?php
     function HookInline_keywordsSearchSearchbarbottomtoolbar()
     {
-        global $lang, $inline_keywords_usertype;
+        global $lang, $inline_keywords_usertype, $inline_keywords_editable_fields;
         if(checkperm($inline_keywords_usertype))
             {
             ?>
@@ -12,14 +12,17 @@
                 
                 <form id="manipulateKeywords">
                   <span class="wrap">
-                    <p>
-                        <label for='newKeywordsForSelectedResources'>Keywords</label>
-                        <input id='newKeywordsForSelectedResources' class='SearchWidth'/>
-                    </p>
-                    <p>
-                        <label for='newNamedPersonsForSelectedResources'>Named Persons</label>
-                        <input id='newNamedPersonsForSelectedResources' class='SearchWidth'/>
-                    </p>
+					<?php
+				foreach($inline_keywords_editable_fields as $field)
+					{
+					$label_result = sql_query("select title from resource_type_field where ref = '$field'");
+					$label = ($label_result[0]['title']);
+					
+                    echo "<p>";
+                        echo "<label for='ref_$field'>$label</label>";
+                        echo "<input id='ref_$field' name='ref_$field' class='SearchWidth'/>";
+                    echo "</p>";
+					} ?>
                   </span>
                   <input type="button" id="selectAllResourceButton" value="<?php echo $lang["selectall"]; ?>">
                   <input type="button" id="clearSelectedResourceButton" value="<?php echo $lang["unselectall"]; ?>">
@@ -32,19 +35,31 @@
     }
     function HookInline_keywordsSearchAdditionalheaderjs()
         {
-        global $baseurl, $inline_keywords_usertype, $inline_keywords_background_colour, $inline_keywords_clear_fields_on_submit;
+        global $baseurl, $inline_keywords_usertype, $inline_keywords_background_colour, $inline_keywords_clear_fields_on_submit, $inline_keywords_sticky_panel;
     if(checkperm($inline_keywords_usertype))
         { ?>
-            <script src="../plugins/inline_keywords/js/jquery.infieldlabel.min.js" type="text/javascript" charset="utf-8"></script>
             <script type='text/javascript'>
                 jQuery(document).ready(function() {
                     jQuery('form#manipulateKeywords label').each(function(){
-                        if(jQuery(this.siblings(':text')).val('aaaa')!==""){
+                        if(jQuery(this.siblings(':text')).val()!==""){
                             this.hide();
                         }
                     });
+                    <?php if($inline_keywords_sticky_panel)
+						{ ?>
+						var panelTop = jQuery('.keywordPanel').eq(0).offset().top;
+
+						jQuery(window).scroll(function(){
+							if(jQuery(window).scrollTop() > (panelTop - 20)){
+								jQuery('.keywordPanel').css({'position':'fixed','top':'20px'});
+							}else{
+								jQuery('.keywordPanel').css({'position':'static','top':'20px'});
+							}
+						});
+						<?php
+						} ?>
                     
-                    jQuery('form#manipulateKeywords :text').focus(function(event){
+					jQuery('form#manipulateKeywords :text').focus(function(event){
                         jQuery(this).siblings('label').fadeOut('fast');
                     });
 
@@ -77,13 +92,14 @@
                     });
                     
                     jQuery('#submitSelectedResourceButton').on('click', function() {
+						var form_values = jQuery('form#manipulateKeywords').serialize();
                         resourceIds = jQuery.map(jQuery('.chosen'), function(a, b){
                             return jQuery(a).attr('id').replace('ResourceShell','');
                         }).join('+');
                         jQuery.ajax({
                             type: "POST",
                             url: "<?php echo $baseurl; ?>/plugins/inline_keywords/pages/add_keywords.php",
-                            data: { refs: resourceIds, keywords: jQuery('#newKeywordsForSelectedResources').val().replace(/ /g,'+') }
+                            data: 'refs=' + resourceIds + '&' + form_values 
                         }).done(function( msg ) {
                             if(msg !== ''){alert( "Data Saved: " + msg );}
                             //jQuery(".keywordPanel").effect("highlight", {}, 3000);

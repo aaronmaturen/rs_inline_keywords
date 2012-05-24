@@ -5,10 +5,11 @@
 
 $lang['selectall'] = 'Select All';
 $lang['unselectall'] = 'Unselect All';
-$lang['editfields'] = 'Edit Field(s)';
+$lang['editfields'] = 'Update Resource';
 $lang['submitchanges'] = 'Submit Changes';
 $lang['keywordstoresource'] = 'Change fields on selected resources.';
 $lang['inline_keywords_clear_fields_on_submit'] = "Clear fields after submitting.";
+$lang['inline_keywords_sticky_panel'] = "Should edit panel stay on the screen while scrolling?";
 
 $lang['inline_keywords_heading'] = 'Inline Keywords Plugin Configuration';
 $lang['inline_keywords_frontm']='This is a sample configuration page for a plugin. It doesn\'t actually modify ' . 

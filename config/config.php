@@ -17,3 +17,5 @@ $inline_keywords_background_colour = 'hotPink';
 $inline_keywords_use_jQuery_ui = True;
 $inline_keywords_use_legacy_jQuery = True;
 $inline_keywords_clear_fields_on_submit = True;
+$inline_keywords_sticky_panel = True;
+$inline_keywords_editable_fields = Array('Keywords');

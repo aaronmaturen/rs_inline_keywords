@@ -44,6 +44,10 @@ $page_intro = '<p>' . $lang['inline_keywords_frontm'] . '</p>';
 $page_def[] = config_add_text_input('inline_keywords_usertype', $lang['inline_keywords_usertype'] );
 $page_def[] = config_add_text_input('inline_keywords_background_colour', $lang['inline_keywords_background_colour']);
 $page_def[] = config_add_boolean_select('inline_keywords_clear_fields_on_submit',$lang['inline_keywords_clear_fields_on_submit'], $lang['no-yes']);
+$page_def[] = config_add_boolean_select('inline_keywords_sticky_panel',$lang['inline_keywords_sticky_panel'], $lang['no-yes']);
+
+$page_def[] = config_add_multi_ftype_select('inline_keywords_editable_fields', 'label');
+
 // Do the page generation ritual
 $upload_status = config_gen_setup_post($page_def, $plugin_name);
 include '../../../include/header.php';
