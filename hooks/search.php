@@ -11,7 +11,12 @@
                 <p><?php echo $lang['keywordstoresource']; ?></p>
                 
                 <form id="manipulateKeywords">
-                  <input id="newKeywordsForSelectedResources" class="SearchWidth"/>
+                  <span class="wrap">
+                    <p>
+                        <label for='newKeywordsForSelectedResources'>Keywords</label>
+                        <input id='newKeywordsForSelectedResources' class='SearchWidth'/>
+                    </p>
+                  </span>
                   <input type="button" id="selectAllResourceButton" value="<?php echo $lang["selectall"]; ?>">
                   <input type="button" id="clearSelectedResourceButton" value="<?php echo $lang["unselectall"]; ?>">
                   <input type="button" id="submitSelectedResourceButton" value="<?php echo $lang["addkeywords"]; ?>">
@@ -26,8 +31,19 @@
         global $baseurl, $inline_keywords_usertype, $inline_keywords_background_colour;
     if(checkperm($inline_keywords_usertype))
         { ?>
+            <script src="../plugins/inline_keywords/js/jquery.infieldlabel.min.js" type="text/javascript" charset="utf-8"></script>
             <script type='text/javascript'>
                 jQuery(document).ready(function() {
+                    jQuery('form#manipulateKeywords :text').focus(function(event){
+                        jQuery(this).siblings('label').fadeOut('fast');
+                    });
+
+                    jQuery('form#manipulateKeywords :text').blur(function(event){
+                        if(jQuery(this).val() === ""){
+                            jQuery(this).siblings('label').fadeIn('fast');                            
+                        }
+                    });
+                    
                     jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').on('click', function(event) {
                         if(!(event.originalEvent.srcElement instanceof HTMLImageElement )){
                             //console.log(event.originalEvent.srcElement instance of HTMLImageElement);
