@@ -1,4 +1,5 @@
 <?php
+//function tweak_preview_images($ref,$rotateangle,$gamma,$extension="jpg")
 
 include_once "../../../include/db.php";
 include_once "../../../include/authenticate.php";if (!checkperm(checkperm($inline_keywords_usertype))) {exit("Permission denied");}

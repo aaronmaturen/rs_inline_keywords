@@ -16,6 +16,10 @@
                         <label for='newKeywordsForSelectedResources'>Keywords</label>
                         <input id='newKeywordsForSelectedResources' class='SearchWidth'/>
                     </p>
+                    <p>
+                        <label for='newNamedPersonsForSelectedResources'>Named Persons</label>
+                        <input id='newNamedPersonsForSelectedResources' class='SearchWidth'/>
+                    </p>
                   </span>
                   <input type="button" id="selectAllResourceButton" value="<?php echo $lang["selectall"]; ?>">
                   <input type="button" id="clearSelectedResourceButton" value="<?php echo $lang["unselectall"]; ?>">
@@ -28,12 +32,18 @@
     }
     function HookInline_keywordsSearchAdditionalheaderjs()
         {
-        global $baseurl, $inline_keywords_usertype, $inline_keywords_background_colour;
+        global $baseurl, $inline_keywords_usertype, $inline_keywords_background_colour, $inline_keywords_clear_fields_on_submit;
     if(checkperm($inline_keywords_usertype))
         { ?>
             <script src="../plugins/inline_keywords/js/jquery.infieldlabel.min.js" type="text/javascript" charset="utf-8"></script>
             <script type='text/javascript'>
                 jQuery(document).ready(function() {
+                    jQuery('form#manipulateKeywords label').each(function(){
+                        if(jQuery(this.siblings(':text')).val('aaaa')!==""){
+                            this.hide();
+                        }
+                    });
+                    
                     jQuery('form#manipulateKeywords :text').focus(function(event){
                         jQuery(this).siblings('label').fadeOut('fast');
                     });
@@ -80,6 +90,9 @@
                             jQuery(".keywordPanel").fadeTo("slow", 0.5, function () {
                                 jQuery(".keywordPanel").fadeTo("slow", 1.0, function(){});
                             });
+                            <?php if($inline_keywords_clear_fields_on_submit){
+                                echo "jQuery('form#manipulateKeywords :text').val('');jQuery('form#manipulateKeywords label').show();";
+                            }?>
                         });
                     });
                 });
