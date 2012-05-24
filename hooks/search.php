@@ -7,7 +7,7 @@
             ?>
             <div id="SearchBoxPanel" class="keywordPanel">
               <div class="SearchSpace">
-                <h2><?php echo $lang["addkeywords"]; ?></h2>
+                <h2><?php echo $lang["editfields"]; ?></h2>
                 <p><?php echo $lang['keywordstoresource']; ?></p>
                 
                 <form id="manipulateKeywords">
@@ -19,7 +19,7 @@
                   </span>
                   <input type="button" id="selectAllResourceButton" value="<?php echo $lang["selectall"]; ?>">
                   <input type="button" id="clearSelectedResourceButton" value="<?php echo $lang["unselectall"]; ?>">
-                  <input type="button" id="submitSelectedResourceButton" value="<?php echo $lang["addkeywords"]; ?>">
+                  <input type="button" id="submitSelectedResourceButton" value="<?php echo $lang["submitchanges"]; ?>">
                 </form>
               </div>
             </div>

@@ -5,8 +5,9 @@
 
 $lang['selectall'] = 'Select All';
 $lang['unselectall'] = 'Unselect All';
-$lang['addkeywords'] = 'Add Keyword(s)';
-$lang['keywordstoresource'] = 'Add keyword(s) to selected resources.';
+$lang['editfields'] = 'Edit Field(s)';
+$lang['submitchanges'] = 'Submit Changes';
+$lang['keywordstoresource'] = 'Change fields on selected resources.';
 
 $lang['inline_keywords_heading'] = 'Inline Keywords Plugin Configuration';
 $lang['inline_keywords_frontm']='This is a sample configuration page for a plugin. It doesn\'t actually modify ' . 
@@ -16,8 +17,8 @@ $lang['inline_keywords_frontm']='This is a sample configuration page for a plugi
 
 $lang['inline_keywords_usertype'] = 'Type of user that should have access to this:';
 $lang['inline_keywords_background_colour'] = 'What colour should the border of selected resource(s) be:';
-$lang['inline_keywords_use_jQuery_ui'] = 'Should jQuery UI be used for notifications:';
-$lang['inline_keywords_use_legacy_jQuery'] = 'Should legacy jQuery functions be used for versions of jQuery less than 1.7.x :';
+//$lang['inline_keywords_use_jQuery_ui'] = 'Should jQuery UI be used for notifications:';
+//$lang['inline_keywords_use_legacy_jQuery'] = 'Should legacy jQuery functions be used for versions of jQuery less than 1.7.x :';
 
 
 $lang['no-yes'] = array('No', 'Yes');
