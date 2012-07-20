@@ -7,8 +7,7 @@
   require '../../../include/resource_functions.php';
   $refs  = explode(' ',str_replace('+',' ',$_REQUEST['refs']));
   foreach($refs as $ref){
-    # echo sql_query("update resource set archive=2 where ref='$ref'");
     delete_resource($ref);
   }
-  echo 'marked as archived';
+  echo explode(', ', $refs);
 ?>
