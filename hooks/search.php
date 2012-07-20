@@ -27,6 +27,7 @@
                   <input type="button" id="selectAllResourceButton" value="<?php echo $lang["selectall"]; ?>">
                   <input type="button" id="clearSelectedResourceButton" value="<?php echo $lang["unselectall"]; ?>">
                   <input type="button" id="submitSelectedResourceButton" value="<?php echo $lang["submitchanges"]; ?>">
+                  <input type="button" id="archiveResourcesButton" value="<?php echo $lang["archiveresources"]; ?>">
                 </form>
               </div>
             </div>
@@ -91,6 +92,20 @@
                         jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                     });
                     
+					jQuery('#archiveResourcesButton').on('click', function(){
+                        resourceIds = jQuery.map(jQuery('.chosen'), function(a, b){
+                            return jQuery(a).attr('id').replace('ResourceShell','');
+                        }).join('+');
+					    jQuery.ajax({
+					      type: "POST",
+					      url: "<?php echo $baseurl; ?>/plugins/inline_keywords/pages/archive_resources.php",
+					      data: { refs: resourceIds  }
+					    }).done(function( msg ) {
+					      location.reload(true);
+					    });
+						
+					});
+					
                     jQuery('#submitSelectedResourceButton').on('click', function() {
 						var form_values = jQuery('form#manipulateKeywords').serialize();
                         resourceIds = jQuery.map(jQuery('.chosen'), function(a, b){

@@ -25,4 +25,6 @@ $lang['inline_keywords_background_colour'] = 'What colour should the border of s
 
 $lang['no-yes'] = array('No', 'Yes');
 
+$lang["archiveresources"] = 'Archive';
+
 ?>
