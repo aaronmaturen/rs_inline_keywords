@@ -9,5 +9,5 @@
   foreach($refs as $ref){
     delete_resource($ref);
   }
-  echo explode(', ', $refs);
+  //echo explode(', ', $refs);
 ?>

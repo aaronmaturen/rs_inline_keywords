@@ -102,7 +102,7 @@
 					      data: { refs: resourceIds  }
 					    }).done(function( msg ) {
 					      location.reload(true);
-						  alert( "Deleted resources: " + msg );
+						  //alert( "Deleted resources: " + msg );
 					    });
 						
 					});
