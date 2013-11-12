@@ -42,7 +42,7 @@
             <script type='text/javascript'>
                 jQuery(document).ready(function() {
                     jQuery('form#manipulateKeywords label').each(function(){
-                        if(jQuery(this.siblings(':text')).val()!==""){
+                        if(jQuery(this).siblings(':text').val()!==""){
                             this.hide();
                         }
                     });
@@ -59,18 +59,17 @@
 						});
 						<?php
 						} ?>
-                    
-					jQuery('form#manipulateKeywords :text').focus(function(event){
+                    jQuery('body').on('focus', 'form#manipulateKeywords :text', function(event){
                         jQuery(this).siblings('label').fadeOut('fast');
                     });
 
-                    jQuery('form#manipulateKeywords :text').blur(function(event){
+                    jQuery('body').on('blur', 'form#manipulateKeywords :text', function(event){
                         if(jQuery(this).val() === ""){
                             jQuery(this).siblings('label').fadeIn('fast');                            
                         }
                     });
                     
-                    jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').on('click', function(event) {
+                    jQuery('body').on('click', '.ResourcePanelShell, .ResourcePanelShellSmall', function(event) {
                         if(!(event.originalEvent.srcElement instanceof HTMLImageElement )){
                             //console.log(event.originalEvent.srcElement instance of HTMLImageElement);
                             jQuery(this).toggleClass('chosen');
@@ -79,20 +78,21 @@
                         }
                     });
                     
-                    jQuery('#clearSelectedResourceButton').on('click', function() {
+                    jQuery('body').on('click', '#clearSelectedResourceButton', function() {
+
                         jQuery('.chosen').removeClass('chosen');
                         jQuery('#newKeywordsForSelectedResources').val('');
                         jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
                         jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                     });
                     
-                    jQuery('#selectAllResourceButton').on('click', function() {
+                    jQuery('body').on('click', '#selectAllResourceButton', function() {
                         jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').addClass('chosen');
                         jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
                         jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                     });
                     
-					jQuery('#archiveResourcesButton').on('click', function(){
+					jQuery('body').on('click', '#archiveResourcesButton', function(){
                         resourceIds = jQuery.map(jQuery('.chosen'), function(a, b){
                             return jQuery(a).attr('id').replace('ResourceShell','');
                         }).join('+');
@@ -107,7 +107,7 @@
 						
 					});
 					
-                    jQuery('#submitSelectedResourceButton').on('click', function() {
+                    jQuery('body').on('click', '#submitSelectedResourceButton', function() {
 						var form_values = jQuery('form#manipulateKeywords').serialize();
                         resourceIds = jQuery.map(jQuery('.chosen'), function(a, b){
                             return jQuery(a).attr('id').replace('ResourceShell','');

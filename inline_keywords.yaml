@@ -1,6 +1,6 @@
 name: inline_keywords
 author: Aaron T. Maturen
-version: 0.71
+version: 0.75
 desc: Enable Editing Fields on Search Result Page
 info_url: https://github.com/aaronmaturen/rs_inline_keywords
 config_url: /plugins/inline_keywords/pages/setup.php
