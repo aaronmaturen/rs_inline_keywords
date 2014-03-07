@@ -48,13 +48,16 @@
                     });
                     <?php if($inline_keywords_sticky_panel)
 						{ ?>
-						var panelTop = jQuery('.keywordPanel').eq(0).offset().top;
 
-						jQuery(window).scroll(function(){
-							if(jQuery(window).scrollTop() > (panelTop - 20)){
-								jQuery('.keywordPanel').css({'position':'fixed','top':'20px'});
-							}else{
-								jQuery('.keywordPanel').css({'position':'static','top':'20px'});
+						jQuery('#UICenter').scroll(function(){
+							var kpanel = jQuery('.keywordPanel');
+							if(kpanel){
+								var panelTop = kpanel.eq(0).offset().top;
+								if(jQuery('#UICenter').scrollTop() > (panelTop - 20)){
+									jQuery('.keywordPanel').css({'position':'fixed','top':'20px'});
+								}else{
+									jQuery('.keywordPanel').css({'position':'static','top':'20px'});
+								}
 							}
 						});
 						<?php
