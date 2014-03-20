@@ -35,12 +35,12 @@
                         }
                     });
                     
-                    jQuery('body').on('click', '.ResourcePanelShell, .ResourcePanelShellSmall', function(event) {
+                    jQuery('body').on('click', '.ResourcePanelShellLarge, .ResourcePanelShell, .ResourcePanelShellSmall', function(event) {
                         if(!(event.originalEvent.srcElement instanceof HTMLImageElement )){
                             //console.log(event.originalEvent.srcElement instance of HTMLImageElement);
                             jQuery(this).toggleClass('chosen');
-                            jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
-                            jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
+                            jQuery('.ResourcePanelLarge, .ResourcePanel, .ResourcePanelSmall').css('border-color','');
+                            jQuery('.chosen .ResourcePanelLarge, .chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                         }
                     });
                     
@@ -48,14 +48,14 @@
 
                         jQuery('.chosen').removeClass('chosen');
                         jQuery('#newKeywordsForSelectedResources').val('');
-                        jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
-                        jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
+                        jQuery('.ResourcePanelLarge, .ResourcePanel, .ResourcePanelSmall').css('border-color','');
+                        jQuery('.chosen .ResourcePanelLarge, .chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                     });
                     
                     jQuery('body').on('click', '#selectAllResourceButton', function() {
-                        jQuery('.ResourcePanelShell, .ResourcePanelShellSmall').addClass('chosen');
-                        jQuery('.ResourcePanel, .ResourcePanelSmall').css('border-color','');
-                        jQuery('.chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
+                        jQuery('.ResourcePanelShellLarge, .ResourcePanelShell, .ResourcePanelShellSmall').addClass('chosen');
+                        jQuery('.ResourcePanelLarge, .ResourcePanel, .ResourcePanelSmall').css('border-color','');
+                        jQuery('.chosen .ResourcePanelLarge, .chosen .ResourcePanel, .chosen .ResourcePanelSmall').css('border-color','<?php echo $inline_keywords_background_colour; ?>');
                     });
                     
 					jQuery('body').on('click', '#archiveResourcesButton', function(){
